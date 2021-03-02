@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.nav {
+  padding: 15px 0;
+  margin: 0;
+  justify-content: center;
+  background: #f5f8fa;
+  border-bottom: 1px solid lightgrey;
+}
+
+.nav a {
+  color: #636b6f;
+  padding: 5px 20px;
+  border: 1px solid transparent;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+
+.login-heading {
+  margin-bottom: 16px;
+}
+
+.form-group{
+  margin-top: 20px;
+}
+
+.logo{
+  text-align: center;
+}
+
+.card, .home-page{
+  transition: all 0.5s ease-in;
+}
+
+@media only screen and (max-width: 360px) {
+  .container .nav{
+    flex-wrap: nowrap;
+  }
+}
