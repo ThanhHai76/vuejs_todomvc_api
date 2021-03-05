@@ -104,11 +104,6 @@ button {
   -webkit-animation-duration: 0.5s;
 }
 
-.list-group-item .editing {
-  border-bottom: none;
-  padding: 0;
-}
-
 .list-group-item.editing .edit {
   display: block;
   width: calc(100% - 43px);
@@ -144,18 +139,12 @@ button {
 }
 
 .list-group-item .destroy {
-  display: none;
-  position: absolute;
-  top: 0;
   right: 10px;
-  bottom: 0;
   width: 40px;
   height: 40px;
-  margin: auto 0;
   font-size: 30px;
   color: #cc9a9a;
   margin-bottom: 11px;
-  transition: color 0.2s ease-out;
 }
 
 .list-group-item .destroy:hover {
@@ -166,12 +155,14 @@ button {
   content: "×";
 }
 
-.list-group-item:hover .destroy {
-  display: block;
+.list-group-item .edit,
+.list-group-item .btn-exit-editing {
+  display: none;
 }
 
-.list-group-item .edit {
-  display: none;
+.list-group-item:hover .destroy,
+.list-group-item:hover .btn-edit {
+  display: block;
 }
 
 .list-group-item .editing:last-child {
@@ -181,26 +172,11 @@ button {
 .footer {
   padding: 10px 15px;
   height: 40px;
-  text-align: center;
   font-size: 15px;
   border-top: 1px solid #e6e6e6;
 }
 
-.footer:before {
-  content: "";
-  position: relative;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 70px;
-  overflow: hidden;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6,
-    0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6,
-    0 17px 2px -6px rgba(0, 0, 0, 0.2);
-}
-
 .todo-count {
-  float: left;
   text-align: left;
   font-weight: 300;
 }

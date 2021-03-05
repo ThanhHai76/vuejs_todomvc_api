@@ -5,7 +5,7 @@
         <router-link :to="{ name: 'home' }">Home</router-link>
       </li>
       <li class="nav-item" v-if="loggedIn">
-        <router-link :to="{ name: 'todo', params: { route: getRoute } }"
+        <router-link :to="{ name: 'todo'}"
           >App</router-link
         >
       </li>
@@ -27,9 +27,6 @@
 <script>
 export default {
   computed: {
-    getRoute() {
-      return this.$store.state.route;
-    },
     loggedIn() {
       return this.$store.getters.loggedIn;
     },

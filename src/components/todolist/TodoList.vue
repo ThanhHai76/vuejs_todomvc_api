@@ -11,7 +11,7 @@
             leave-active-class="animated fadeOutDown"
           >
             <todo-item
-              v-for="todo in filteredTodos"
+              v-for="todo in getTodos"
               :key="todo.id"
               v-bind:todo="todo"
             ></todo-item>
@@ -23,41 +23,33 @@
     </section>
 
     <footer class="info">
-      <p>Double-click to edit a todo</p>
-      <p>Esc to cancel edit</p>
+      <p>Double-click / Click edit button to edit a todo</p>
+      <p>Esc / Click X to cancel edit</p>
       <p>Enter to accept edit</p>
     </footer>
   </div>
 </template>
 
 <script>
-import TodoHeader from "./TodoHeader.vue";
-import TodoFooter from "./TodoFooter.vue";
-import TodoItem from "./TodoItem.vue";
+import TodoHeader from './TodoHeader.vue'
+import TodoFooter from './TodoFooter.vue'
+import TodoItem from './TodoItem.vue'
 
-const LOCAL_STORAGE_KEY = "todo-app-vue";
 export default {
-  name: "TodoList",
+  name: 'TodoList',
   data() {
     return {};
   },
   created() {
-    this.$store.dispatch("getTodos");
+    this.$store.dispatch('getTodos')
   },
   methods: {},
   computed: {
-    filteredTodos() {
-      return this.$store.getters.filteredTodos;
+    getTodos() {
+      return this.$store.state.todos
     },
   },
-  watch: {
-    filteredTodos: {
-      deep: true,
-      handler(newValue) {
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newValue));
-      },
-    },
-  },
+  watch: {},
   components: {
     TodoHeader,
     TodoItem,
@@ -66,14 +58,5 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.2s;
-}
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
 </style>

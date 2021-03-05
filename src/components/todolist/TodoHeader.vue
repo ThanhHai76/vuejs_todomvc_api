@@ -19,29 +19,29 @@
 </template>
 
 <script>
-import TodoCheckAll from './TodoCheckAll.vue';
+import TodoCheckAll from './TodoCheckAll.vue'
 export default {
-  name: "TodoHeader",
+  name: 'TodoHeader',
   data() {
     return {
       newTodo: this.$store.state.newTodo,
-    };
+    }
   },
   methods: {
     createTodo() {
       if (!this.newTodo) {
-        return;
+        return
       }
-      this.$store.dispatch("addTodo", {
+      this.$store.dispatch('addTodo', {
         content: this.newTodo,
-        status: "active",
-      });
-      this.newTodo = null;
+        status: 'active',
+      })
+      this.newTodo = null
     },
   },
   components: {
       TodoCheckAll
   }
-};
+}
 </script>
 <style scoped></style>

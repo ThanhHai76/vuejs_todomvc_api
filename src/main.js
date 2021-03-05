@@ -1,14 +1,18 @@
 import Vue from 'vue'
 import App from './App.vue'
-import VueRouter from "vue-router";
+import VueRouter from 'vue-router'
 import routes from './router/router'
 import { store } from './store/store'
+import VueSpinners from 'vue-spinners'
+import VeeValidate from 'vee-validate'
 
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
+Vue.use(VeeValidate)
+Vue.use(VueSpinners)
 
 //define meta properties
 const router = new VueRouter({
@@ -25,23 +29,23 @@ router.beforeEach((to, from, next) => {
     //iterate over $route.matched to check for meta fields in route records
     if (!store.getters.loggedIn) {
       next({
-        name: "login",//redirect to a different location
-      });
+        name: 'login',//redirect to a different location
+      })
     } else {
-      next();//move on to the next hook in the pipeline, if no hooks are left, the navigation is confirmed
+      next()//move on to the next hook in the pipeline, if no hooks are left, the navigation is confirmed
     }
   } else if (to.matched.some((record) => record.meta.requiresVisitor)) {
-    if (store.getters.loggedIn && store.loggedIn) {
+    if (store.getters.loggedIn) {
       next({
-        name: "todo",
-      });
+        name: 'todo',
+      })
     } else {
-      next();
+      next()
     }
   } else {
-    next();
+    next()
   }
-});
+})
 
 new Vue({
   router: router,

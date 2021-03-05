@@ -8,12 +8,12 @@
 <script>
 export default {
   created() {
-    this.$store.dispatch("clearTodos");
-    this.$store.dispatch("destroyToken").then((response) => {
-      this.$router.push({ name: "home" }).catch(()=>{});
-    });
+    this.$store.commit('clearTodos')
+    this.$store.dispatch('destroyToken').then(() => {
+      this.$router.push({ name: 'home' }).catch(()=>{})
+    })
   },
-};
+}
 </script>
 
 <style scoped></style>

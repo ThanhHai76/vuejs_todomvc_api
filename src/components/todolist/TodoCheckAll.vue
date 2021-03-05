@@ -5,7 +5,7 @@
       type="checkbox"
       :checked="isCheckAll"
       @change="checkAll"
-      v-show="todoFilter.length"
+      v-show="getTodos.length"
     />
     <label for="check-box"></label>
   </div>
@@ -13,31 +13,31 @@
 
 <script>
 export default {
-  name: "todo-check-all",
+  name: 'todo-check-all',
   data() {
-    return {};
+    return {}
   },
   props: {},
   computed: {
-    todoFilter() {
-      return this.$store.getters.filteredTodos;
+    getTodos() {
+      return this.$store.state.todos
     },
     isCheckAll() {
-      return this.$store.getters.checkAll;
+      return this.$store.getters.checkAll
     },
   },
   methods: {
     checkAll(event) {
-      const check = event.target.checked;
+      const check = event.target.checked
       if (check) {
-        this.status = "completed";
+        this.status = 'completed'
       } else {
-        this.status = "active";
+        this.status = 'active'
       }
-      this.$store.dispatch("checkAll", this.status);
+      this.$store.dispatch('checkAll', this.status)
     },
   },
-};
+}
 </script>
 
 <style scoped></style>

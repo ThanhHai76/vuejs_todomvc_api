@@ -1,29 +1,25 @@
 <template>
   <div>
-    <h2 class="login-heading">Register</h2>
+    <h2 class="mt-2">Register</h2>
     <div
-      :class="{
-        'alert alert-success': response.username,
-        'alert alert-danger': response.message,
-      }"
-      role="alert"
+      v-if="errorMsg"
+      class="alert alert-danger"
     >
-      <div v-if="response.username">
-        You have successfully registered
-      </div>
-      {{ response.message}}
+      {{errorMsg}}
     </div>
-    <form class="form-group" action="#" @submit.prevent="register">
+    <form class="form-group" action="#" @submit.prevent="validateRegister">
       <div class="input-group mb-3">
         <span class="input-group-text"><i class="fas fa-user"></i></span>
         <input
           type="text"
-          name="name"
+          name="username"
           placeholder="Username"
           class="form-control"
-          v-model="name"
+          v-model="username"
+          v-validate="'required|min:3'"
           required
         />
+        <span v-if="errors.has('username')" class="form-error">{{ errors.first('username') }}</span>
       </div>
 
       <div class="input-group mb-3">
@@ -34,11 +30,13 @@
           placeholder="Password"
           class="form-control"
           v-model="password"
+          v-validate="'required|min:8'"
           required
         />
+        <span v-if="errors.has('password')" class="form-error">{{ errors.first('password') }}</span>
       </div>
 
-      <div class="mb-3">
+      <div>
         <button type="submit" class="btn btn-success">Create Account</button>
       </div>
     </form>
@@ -49,28 +47,38 @@
 export default {
   data() {
     return {
-      name: "",
-      password: "",
-    };
+      username: '',
+      password: '',
+      errorMsg: '',
+    }
   },
   methods: {
+    validateRegister(){
+      this.$validator.validateAll().then((result) => {
+        if(result){
+          this.register();
+        }
+      })
+    },
     register() {
+      this.$store.commit('loading')
       this.$store
-        .dispatch("register", {
-          name: this.name,
+        .dispatch('register', {
+          name: this.username,
           password: this.password,
         })
-        .then((response) => {
-          this.$router.push({ name: "login" });
-        });
+        .then(() => {
+          const message = 'You have successfully registered. You can login hear !'
+          this.$router.push({ 
+            name: 'login',
+            params: { dataSuccessMsg: message } 
+          })
+        }).catch(error => {
+          this.errorMsg = error.response.data.message
+        })
     },
   },
-  computed: {
-    response() {
-      return this.$store.state.response;
-    },
-  },
-};
+}
 </script>
 
 <style scoped></style>

@@ -35,17 +35,17 @@ export default {
       allTodo: this.$store.state.todos.length,
       activeTodo: this.$store.getters.activeTodos.length,
       completedTodo: this.$store.getters.completedTodos.length,
-    };
+    }
   },
   computed: {
     isLogin() {
-      return this.$store.getters.loggedIn;
+      return this.$store.getters.loggedIn
     },
     getUsername() {
-      return localStorage.getItem("user_todo");
+      return this.$store.state.username
     },
   },
-};
+}
 </script>
 
 <style scoped></style>
