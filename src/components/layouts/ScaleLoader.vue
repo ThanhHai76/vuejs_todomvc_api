@@ -91,42 +91,4 @@ export default {
 };
 </script>
 
-<style>
-.v-spinner {
-  text-align: center;
-}
-
-@-webkit-keyframes v-scaleStretchDelay {
-  0% {
-    -webkit-animation-name: inherit;
-    -webkit-animation-duration: inherit;
-    -webkit-animation-iteration-count: inherit;
-    -webkit-animation-direction: inherit;
-  }
-  100% {
-    -webkit-transform: scaleY(1);
-    transform: scaleY(1);
-  }
-  50% {
-    -webkit-transform: scaleY(0.4);
-    transform: scaleY(0.4);
-  }
-}
-
-@keyframes v-scaleStretchDelay {
-  0% {
-    -webkit-animation-name: inherit;
-    -webkit-animation-duration: inherit;
-    -webkit-animation-iteration-count: inherit;
-    -webkit-animation-direction: inherit;
-  }
-  100% {
-    -webkit-transform: scaleY(1);
-    transform: scaleY(1);
-  }
-  50% {
-    -webkit-transform: scaleY(0.4);
-    transform: scaleY(0.4);
-  }
-}
-</style>
+<style></style>
