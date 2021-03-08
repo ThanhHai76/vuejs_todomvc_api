@@ -3,7 +3,6 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 import routes from './router/router'
 import { store } from './store/store'
-import VueSpinners from 'vue-spinners'
 import VeeValidate from 'vee-validate'
 
 import 'bootstrap'
@@ -12,7 +11,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 Vue.config.productionTip = false
 Vue.use(VueRouter)
 Vue.use(VeeValidate)
-Vue.use(VueSpinners)
 
 //define meta properties
 const router = new VueRouter({

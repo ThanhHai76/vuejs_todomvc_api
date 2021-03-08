@@ -26,7 +26,6 @@ export default {
         .then((response) => {
           const token = response.data.token
           localStorage.setItem('access_token', token)
-          localStorage.setItem('user_name', response.data.username)
           commit('login', token)
           resolve(response)
         })
@@ -41,7 +40,6 @@ export default {
       'Bearer ' + context.state.token
     if (context.getters.loggedIn) {
       localStorage.removeItem('access_token')
-      localStorage.removeItem('user_name')
       context.commit('destroyToken')
     }
   },

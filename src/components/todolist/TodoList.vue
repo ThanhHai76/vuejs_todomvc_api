@@ -49,7 +49,6 @@ export default {
       return this.$store.state.todos
     },
   },
-  watch: {},
   components: {
     TodoHeader,
     TodoItem,

@@ -1,4 +1,3 @@
-import Home from '../components/Home'
 import Login from '../components/auth/Login'
 import Register from '../components/auth/Register'
 import TodoList from '../components/todolist/TodoList'
@@ -9,7 +8,9 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: Home,
+    redirect: {
+      name: 'login'
+    }
   },
   { 
     path: '/todo', 

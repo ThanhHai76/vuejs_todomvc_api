@@ -1,5 +1,12 @@
 import axios from 'axios'
 export default {
+  login(state, token) {
+    state.token = token
+  },
+  destroyToken(state) {
+    state.token = null
+  },
+  
   getTodos(state, todos) {
     state.todos = todos
   },
@@ -37,19 +44,5 @@ export default {
   },
   clearCompleted(state) {
     state.todos = state.todos.filter((todo) => todo.status === 'active')
-  },
-
-  login(state, token) {
-    state.token = token
-    state.loading = false
-  },
-  destroyToken(state) {
-    state.token = null
-  },
-  loading(state){
-    state.loading = true
-  },
-  stopLoading(state){
-    state.loading = false
   },
 }

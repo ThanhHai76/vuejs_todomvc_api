@@ -16,8 +16,6 @@
     "vee-validate": "^2.2.15",
     "vue": "^2.6.11",
     "vue-router": "^3.5.1",
-    "vue-spinner": "^1.0.4",
-    "vue-spinners": "^1.0.2",
     "vuex": "^3.6.2"
   },
   "devDependencies": {

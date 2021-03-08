@@ -15,8 +15,6 @@ export const store = new Vuex.Store({
     todos: [],
     editingTodo: false,
     newTodo: null,
-    username: localStorage.getItem('user_name') || null,
-    loading: false
   },
   getters: getters,
   mutations: mutations,

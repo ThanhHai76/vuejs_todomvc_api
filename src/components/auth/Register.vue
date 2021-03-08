@@ -17,9 +17,10 @@
           class="form-control"
           v-model="username"
           v-validate="'required|min:3'"
+          spellcheck="false"
           required
         />
-        <span v-if="errors.has('username')" class="form-error">{{ errors.first('username') }}</span>
+        <span v-show="errors.has('username')" class="form-error">{{ errors.first('username') }}</span>
       </div>
 
       <div class="input-group mb-3">
@@ -33,11 +34,11 @@
           v-validate="'required|min:8'"
           required
         />
-        <span v-if="errors.has('password')" class="form-error">{{ errors.first('password') }}</span>
+        <span v-show="errors.has('password')" class="form-error">{{ errors.first('password') }}</span>
       </div>
 
       <div>
-        <button type="submit" class="btn btn-success">Create Account</button>
+        <button :disabled="errors.any()" type="submit" class="btn btn-success">Create Account</button>
       </div>
     </form>
   </div>
@@ -61,7 +62,6 @@ export default {
       })
     },
     register() {
-      this.$store.commit('loading')
       this.$store
         .dispatch('register', {
           name: this.username,

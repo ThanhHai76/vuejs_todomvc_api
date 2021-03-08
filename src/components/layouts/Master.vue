@@ -1,9 +1,6 @@
 <template>
   <div class="container col-md-6">
     <ul class="nav justify-content-center">
-      <li class="nav-item">
-        <router-link :to="{ name: 'home' }">Home</router-link>
-      </li>
       <li class="nav-item" v-if="loggedIn">
         <router-link :to="{ name: 'todo'}"
           >App</router-link

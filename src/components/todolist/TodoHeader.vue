@@ -12,6 +12,7 @@
         placeholder="What needs to be done"
         v-model.trim="newTodo"
         @keyup.enter="createTodo()"
+        spellcheck="false"
         autofocus
       />
     </div>

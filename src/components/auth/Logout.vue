@@ -10,7 +10,7 @@ export default {
   created() {
     this.$store.commit('clearTodos')
     this.$store.dispatch('destroyToken').then(() => {
-      this.$router.push({ name: 'home' }).catch(()=>{})
+      this.$router.push({ name: 'login' }).catch(()=>{})
     })
   },
 }

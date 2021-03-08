@@ -28,6 +28,7 @@
       @keyup.escape="cancelEditing()"
       @keyup.enter="finishEditing()"
       v-model.trim="todo.content"
+      spellcheck="false"
     />
   </div>
 </template>
