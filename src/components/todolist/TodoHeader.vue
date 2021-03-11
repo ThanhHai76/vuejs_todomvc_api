@@ -15,6 +15,11 @@
         spellcheck="false"
         autofocus
       />
+      <button 
+        @click="createTodo()" 
+        class="btn btn-light btn-lg align-self-center mr-4">
+       <i class="fas fa-angle-double-right"></i>
+      </button>
     </div>
   </header>
 </template>
@@ -35,7 +40,7 @@ export default {
       }
       this.$store.dispatch('addTodo', {
         content: this.newTodo,
-        status: 'active',
+        status: 'active'
       })
       this.newTodo = null
     },

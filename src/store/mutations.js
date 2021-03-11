@@ -1,10 +1,16 @@
-import axios from 'axios'
 export default {
   login(state, token) {
-    state.token = token
+    if (token) {
+      state.token = token
+    }
+    state.loading = false
   },
-  destroyToken(state) {
+  register(state){
+    state.loading = false
+  },
+  logout(state) {
     state.token = null
+    state.todos = []
   },
   
   getTodos(state, todos) {
@@ -21,28 +27,11 @@ export default {
     const index = state.todos.findIndex((t) => t.id == todo.id)
     state.todos.splice(index, 1, todo)
   },
-  checkAll(state, status) {
-    state.todos.forEach((todo) => {
-      axios
-        .put('/api/todos/' + todo.id, {
-          status: status,
-        })
-        .then(() => {
-          todo.status = status
-        })
-        .catch((error) => {
-          console.log(error)
-        })
-    })
-  },
   deleteTodo(state, todo) {
     const index = state.todos.indexOf(todo)
     state.todos.splice(index, 1)
   },
-  clearTodos(state) {
-    state.todos = []
-  },
-  clearCompleted(state) {
-    state.todos = state.todos.filter((todo) => todo.status === 'active')
+  loading(state) {
+    state.loading = true
   },
 }

@@ -61,25 +61,22 @@ export default {
     }
   },
   methods: {
-    validateLogin(){
-      this.$validator.validateAll().then((result) => {
-        if(result){
-          this.login();
-        }
-      })
+    async validateLogin(){
+      const result = await this.$validator.validateAll()
+      if(result){
+        this.login();
+      }
     },
-    login() {
-      this.$store
-        .dispatch('login', {
+    async login() {
+      try {
+        const response = await this.$store.dispatch('login', {
           username: this.username,
           password: this.password,
         })
-        .then(() => {
-          this.$router.push({ name: 'todo'})
-        })
-        .catch((error) => {
-          this.errorMsg = error.response.data.message;
-        })
+        this.$router.push({ name: 'todo'})
+      } catch (error) {
+        this.errorMsg = error.response.data.message;
+      }
     },
   },
 }

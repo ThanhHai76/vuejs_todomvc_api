@@ -7,11 +7,15 @@
       crossorigin="anonymous"
     />
     <master></master>
+    <div v-if="loading" class="loading">
+      <scale-loader></scale-loader>
+    </div>
   </div>
 </template>
 
 <script>
 import Master from './components/layouts/Master.vue'
+import ScaleLoader from './components/layouts/ScaleLoader.vue'
 import './assets/app.js'
 
 export default {
@@ -19,8 +23,14 @@ export default {
     return {}
   },
   name: 'App',
+  computed: {
+    loading(){
+      return this.$store.state.loading
+    }
+  },
   components: {
-    Master
+    Master,
+    ScaleLoader
   },
 }
 </script>

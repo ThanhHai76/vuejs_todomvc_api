@@ -16,20 +16,31 @@
       <label class="content" @dblclick="startEditing()">{{
         todo.content
       }}</label>
-      <button
-        class="btn btn-primary btn-edit btn-item"
-        @click="startEditing()"
-      ></button>
-      <button class="destroy btn-item" @click="destroy()"></button>
+      <button class="btn btn-light btn-edit btn-item" @click="startEditing()">
+        <i class="fas fa-pencil-alt"></i>
+      </button>
+      <button class="destroy btn-item" @click="deleteTodo()"></button>
     </div>
-    <button class="btn btn-exit-editing" @click="cancelEditing()">x</button>
-    <input
-      class="edit form-control"
-      @keyup.escape="cancelEditing()"
-      @keyup.enter="finishEditing()"
-      v-model.trim="todo.content"
-      spellcheck="false"
-    />
+    <div class="input-group">
+      <input
+        class="edit form-control"
+        type="text"
+        @keyup.enter="finishEditing()"
+        @keyup.escape="cancelEditing()"
+        @blur="finishEditing()"
+        v-model.trim="todo.content"
+        spellcheck="false"
+        v-edit-focus="editingTodo"
+      />
+      <button class="btn btn-primary btn-editing btn-save" 
+        @mousedown="finishEditing()">
+        <i class="fas fa-save"></i>
+      </button>
+      <button class="btn btn-secondary btn-editing btn-exit" 
+        @mousedown="cancelEditing()">
+        x
+      </button>
+    </div>
   </div>
 </template>
 
@@ -81,19 +92,26 @@ export default {
     updateTodo() {
       this.$store.dispatch('updateTodo', this.todo)
     },
-    destroy() {
+    deleteTodo() {
       this.$store.dispatch('deleteTodo', this.todo)
     },
   },
+  directives: {
+    'edit-focus': function (el, binding) {
+      if (binding.value) {
+        el.focus();
+      }
+    }
+	}
 };
 </script>
 
 <style scoped>
 .list-group-item .btn-edit {
-  font-size: 12px;
+  font-size: 16px;
   right: 50px;
-  width: 60px;
-  height: 30px;
+  width: 40px;
+  height: 35px;
 }
 
 .btn-item {
@@ -105,20 +123,15 @@ export default {
   position: absolute;
 }
 
-.list-group-item .btn-edit:hover {
-  color: gray;
-}
-
-.list-group-item .btn-edit:after {
-  content: "Edit";
-}
-
-.list-group-item.editing .btn-exit-editing {
+.list-group-item.editing .btn-editing{
   display: block;
   position: absolute;
-  right: 20px;
-  background-color:gray;
   z-index: 9;
-  color: white;
+}
+.list-group-item.editing .btn-exit {
+  right: 0;
+}
+.list-group-item.editing .btn-save {
+  right: 40px;
 }
 </style>

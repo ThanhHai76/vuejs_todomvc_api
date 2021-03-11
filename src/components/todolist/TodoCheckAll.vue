@@ -15,7 +15,9 @@
 export default {
   name: 'todo-check-all',
   data() {
-    return {}
+    return {
+      status: 'active'
+    }
   },
   props: {},
   computed: {
@@ -34,7 +36,13 @@ export default {
       } else {
         this.status = 'active'
       }
-      this.$store.dispatch('checkAll', this.status)
+      this.getTodos.forEach((todo) => {
+        this.$store.dispatch('updateTodo', {
+          id: todo.id, 
+          content: todo.content,
+          status: this.status
+        })
+      });
     },
   },
 }

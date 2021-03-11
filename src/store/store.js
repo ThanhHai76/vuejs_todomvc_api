@@ -15,6 +15,7 @@ export const store = new Vuex.Store({
     todos: [],
     editingTodo: false,
     newTodo: null,
+    loading: false
   },
   getters: getters,
   mutations: mutations,

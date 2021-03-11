@@ -7,7 +7,6 @@ import Logout from '../components/auth/Logout'
 const routes = [
   {
     path: '/',
-    name: 'home',
     redirect: {
       name: 'login'
     }

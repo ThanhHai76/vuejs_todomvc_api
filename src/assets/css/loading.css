@@ -1,0 +1,73 @@
+/* Absolute Center Spinner */
+.loading {
+  position: fixed;
+  z-index: 9;
+  height: 2em;
+  overflow: visible;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+/* Transparent Overlay */
+.loading:before {
+  content: "";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* :not(:required) hides these rules from IE9 and below */
+.loading:not(:required) {
+  /* hide "loading..." text */
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+
+/* ----------------Scale-Loading------------------ */
+.v-spinner {
+  text-align: center;
+}
+
+@-webkit-keyframes v-scaleStretchDelay {
+  0% {
+    -webkit-animation-name: inherit;
+    -webkit-animation-duration: inherit;
+    -webkit-animation-iteration-count: inherit;
+    -webkit-animation-direction: inherit;
+  }
+  100% {
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+  50% {
+    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.4);
+  }
+}
+
+@keyframes v-scaleStretchDelay {
+  0% {
+    -webkit-animation-name: inherit;
+    -webkit-animation-duration: inherit;
+    -webkit-animation-iteration-count: inherit;
+    -webkit-animation-direction: inherit;
+  }
+  100% {
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+  50% {
+    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.4);
+  }
+}

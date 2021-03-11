@@ -25,7 +25,7 @@
     <footer class="info">
       <p>Double-click / Click edit button to edit a todo</p>
       <p>Esc / Click X to cancel edit</p>
-      <p>Enter to accept edit</p>
+      <p>Enter / Click save button to accept edit</p>
     </footer>
   </div>
 </template>

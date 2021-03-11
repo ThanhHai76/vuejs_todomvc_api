@@ -59,8 +59,7 @@ button {
   color: #b83f45;
 }
 
-.new-todo,
-.edit {
+.new-todo {
 	position: relative;
 	margin: 0;
 	width: 100%;
@@ -69,19 +68,13 @@ button {
 	font-weight: inherit;
 	line-height: 1.4em;
 	color: inherit;
-	padding: 6px;
-	border: 1px solid #999;
-	box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
 	box-sizing: border-box;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-
-.new-todo {
-	padding: 16px 16px 16px 40px;
+  padding: 16px 16px 16px 40px;
 	border: none;
 	background: rgba(0, 0, 0, 0.003);
 	box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
+  -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 .main {
@@ -156,7 +149,7 @@ button {
 }
 
 .list-group-item .edit,
-.list-group-item .btn-exit-editing {
+.list-group-item .btn-editing {
   display: none;
 }
 
@@ -179,30 +172,6 @@ button {
 .todo-count {
   text-align: left;
   font-weight: 300;
-}
-
-.filters {
-  list-style: none;
-  position: absolute;
-  right: 0;
-  left: 0;
-}
-
-.filters .router a {
-  color: inherit;
-  margin: 3px;
-  padding: 3px 7px;
-  text-decoration: none;
-  border: 1px solid transparent;
-  border-radius: 3px;
-}
-
-.filters .router a:hover {
-  border: 1px solid rgba(175, 47, 47, 0.1);
-}
-
-.filters .router a.selected {
-  border: 1px solid rgba(175, 47, 47, 0.2);
 }
 
 .clear-completed,
@@ -237,22 +206,4 @@ html .clear-completed:active {
 
 .info a:hover {
   text-decoration: underline;
-}
-
-@media only screen and (max-width: 360px) {
-  .footer{
-    display: flex;
-    flex-direction: column;
-    height: auto;
-  }
-  .footer:before {
-    height: 25px;
-    box-shadow: none;
-  }
-  .todo-count{
-    text-align: center;
-  }
-  .clear-completed{
-    position: relative;
-  }
 }

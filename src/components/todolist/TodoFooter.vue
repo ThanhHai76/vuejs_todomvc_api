@@ -9,7 +9,7 @@
         @click="clearCompleted()"
         v-show="todoCompleted.length"
       >
-        Clear completed
+      Delete done
       </button>
     </transition>
   </footer>
@@ -32,7 +32,9 @@ export default {
   },
   methods: {
     clearCompleted() {
-      this.$store.dispatch('clearCompleted')
+      this.todoCompleted.forEach(todo => {
+        this.$store.dispatch('deleteTodo', todo)
+      });
     },
   },
 }

@@ -1,17 +1,12 @@
 <template>
-  <div class="container text-center">
-    <h2 class="login-heading">Home Page</h2>
-    <img alt="Vue logo" src="../../assets/logo.png">
-  </div>
+  <div></div>
 </template>
 
 <script>
 export default {
   created() {
-    this.$store.commit('clearTodos')
-    this.$store.dispatch('destroyToken').then(() => {
-      this.$router.push({ name: 'login' }).catch(()=>{})
-    })
+    this.$store.dispatch('logout')
+    this.$router.push({ name: 'login' })
   },
 }
 </script>

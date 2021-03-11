@@ -38,7 +38,7 @@
       </div>
 
       <div>
-        <button :disabled="errors.any()" type="submit" class="btn btn-success">Create Account</button>
+        <button :disabled="errors.any()" type="submit" class="btn btn-success">Register</button>
       </div>
     </form>
   </div>
@@ -54,28 +54,26 @@ export default {
     }
   },
   methods: {
-    validateRegister(){
-      this.$validator.validateAll().then((result) => {
-        if(result){
-          this.register();
-        }
-      })
+    async validateRegister(){
+      const result = await this.$validator.validateAll()
+      if(result){
+        this.register();
+      }
     },
-    register() {
-      this.$store
-        .dispatch('register', {
+    async register() {
+      try {
+        const response = await this.$store.dispatch('register', {
           name: this.username,
           password: this.password,
         })
-        .then(() => {
-          const message = 'You have successfully registered. You can login hear !'
-          this.$router.push({ 
-            name: 'login',
-            params: { dataSuccessMsg: message } 
-          })
-        }).catch(error => {
-          this.errorMsg = error.response.data.message
+        const message = 'You have successfully registered. You can login hear !'
+        this.$router.push({ 
+          name: 'login',
+          params: { dataSuccessMsg: message } 
         })
+      } catch (error) {
+        this.errorMsg = error.response.data.message
+      }
     },
   },
 }
