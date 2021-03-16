@@ -1,15 +1,12 @@
 <template>
   <footer class="footer">
-    <span class="todo-count">
-      <strong>{{ itemsLefts }}</strong> item(s) left
-    </span>
     <transition name="fade">
       <button
         class="clear-completed"
-        @click="clearCompleted()"
-        v-show="todoCompleted.length"
+        @click="deleteTodoChecked()"
+        v-show="todoChecked.length"
       >
-      Delete done
+      Delete checked
       </button>
     </transition>
   </footer>
@@ -17,27 +14,21 @@
 
 <script>
 export default {
-  name: 'todo-footer',
-  props: {},
+  name: 'TodoFooter',
   data() {
     return {}
   },
   computed: {
-    itemsLefts() {
-      return this.$store.getters.itemsLeft
-    },
-    todoCompleted() {
-      return this.$store.getters.completedTodos
+    todoChecked() {
+      return this.$store.getters.checkedTodo
     },
   },
   methods: {
-    clearCompleted() {
-      this.todoCompleted.forEach(todo => {
+    deleteTodoChecked() {
+      this.todoChecked.forEach(todo => {
         this.$store.dispatch('deleteTodo', todo)
       });
     },
   },
 }
 </script>
-
-<style scoped></style>

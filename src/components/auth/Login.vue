@@ -46,7 +46,7 @@
 
 <script>
 export default {
-  name: "login",
+  name: 'Login',
   props: {
     dataSuccessMsg: {
       type: String
@@ -81,5 +81,3 @@ export default {
   },
 }
 </script>
-
-<style scoped></style>

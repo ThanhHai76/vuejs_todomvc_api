@@ -12,7 +12,7 @@
       <li class="nav-item" v-if="!loggedIn">
         <router-link :to="{ name: 'register' }">Register</router-link>
       </li>
-      <li class="nav-item" v-if="loggedIn">
+      <li class="nav-item" @click="logout()" v-if="loggedIn">
         <router-link :to="{ name: 'logout' }">Logout</router-link>
       </li>
     </ul>
@@ -23,6 +23,13 @@
 
 <script>
 export default {
+  name: 'Master',
+  methods: {
+    logout(){
+      this.$store.dispatch('logout')
+      this.$router.push({ name: 'login' })
+    }
+  },
   computed: {
     loggedIn() {
       return this.$store.getters.loggedIn;

@@ -49,8 +49,7 @@ export default {
   async addTodo({ commit }, todo) {
     try {
       const response = await axios.post('/api/todos', {
-        content: todo.content,
-        status: todo.status,
+        content: todo.content
       })
       commit('addTodo', response.data)
     } catch (error) {
@@ -60,18 +59,21 @@ export default {
   async updateTodo({ commit }, todo) {
     try {
       const response = await axios.put('/api/todos/' + todo.id, {
-        content: todo.content,
-        status: todo.status,
+        content: todo.content
       })
-      commit('updateTodo', response.data)
+      const data = {...response.data, checked: todo.checked}
+      commit('updateTodo', data)
     } catch (error) {
       console.log(error)
     }
   },
+  checkTodo({ commit }, todo) {
+    commit('updateTodo', todo)
+  },
   async deleteTodo({ commit }, todo) {
     try{
       const response = await axios.delete('/api/todos/' + todo.id)
-      commit('deleteTodo', response.data)
+      commit('deleteTodo', todo)
     } catch (error) {
       console.log(error)
     }

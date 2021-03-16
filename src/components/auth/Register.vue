@@ -46,6 +46,7 @@
 
 <script>
 export default {
+  name: 'Register',
   data() {
     return {
       username: '',
@@ -78,5 +79,3 @@ export default {
   },
 }
 </script>
-
-<style scoped></style>

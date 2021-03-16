@@ -13,13 +13,7 @@
 
 <script>
 export default {
-  name: 'todo-check-all',
-  data() {
-    return {
-      status: 'active'
-    }
-  },
-  props: {},
+  name: 'TodoCheckAll',
   computed: {
     getTodos() {
       return this.$store.state.todos
@@ -30,22 +24,15 @@ export default {
   },
   methods: {
     checkAll(event) {
-      const check = event.target.checked
-      if (check) {
-        this.status = 'completed'
-      } else {
-        this.status = 'active'
-      }
+      const checked = event.target.checked
       this.getTodos.forEach((todo) => {
-        this.$store.dispatch('updateTodo', {
-          id: todo.id, 
+        this.$store.dispatch('checkTodo', {
+          id: todo.id,
           content: todo.content,
-          status: this.status
+          checked: checked
         })
       });
     },
   },
 }
 </script>
-
-<style scoped></style>

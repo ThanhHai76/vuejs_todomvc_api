@@ -26,7 +26,6 @@
 <script>
 export default {
   name: 'ScaleLoader',
-
   props: {
     loading: {
       type: Boolean,
@@ -87,5 +86,3 @@ export default {
   },
 };
 </script>
-
-<style></style>

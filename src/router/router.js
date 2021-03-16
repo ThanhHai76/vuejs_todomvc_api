@@ -1,7 +1,6 @@
 import Login from '../components/auth/Login'
 import Register from '../components/auth/Register'
 import TodoList from '../components/todolist/TodoList'
-import Logout from '../components/auth/Logout'
 
 //each routes object in the routes configuration is called a route record
 const routes = [
@@ -39,7 +38,9 @@ const routes = [
   {
     path: '/logout',
     name: 'logout',
-    component: Logout,
+    redirect: {
+      name: 'login'
+    }
   },
 ]
 

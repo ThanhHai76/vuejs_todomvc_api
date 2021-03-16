@@ -39,8 +39,7 @@ export default {
         return
       }
       this.$store.dispatch('addTodo', {
-        content: this.newTodo,
-        status: 'active'
+        content: this.newTodo
       })
       this.newTodo = null
     },
@@ -50,4 +49,3 @@ export default {
   }
 }
 </script>
-<style scoped></style>

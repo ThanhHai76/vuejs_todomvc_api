@@ -19,7 +19,7 @@
         </div>
       </section>
 
-      <todoFooter></todoFooter>
+      <todo-footer></todo-footer>
     </section>
 
     <footer class="info">
@@ -37,13 +37,9 @@ import TodoItem from './TodoItem.vue'
 
 export default {
   name: 'TodoList',
-  data() {
-    return {};
-  },
   created() {
     this.$store.dispatch('getTodos')
   },
-  methods: {},
   computed: {
     getTodos() {
       return this.$store.state.todos
@@ -56,6 +52,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-</style>

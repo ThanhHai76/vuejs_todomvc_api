@@ -12,15 +12,16 @@ export default {
     state.token = null
     state.todos = []
   },
-  
   getTodos(state, todos) {
-    state.todos = todos
+    state.todos = todos.map((todo) => {
+      return {...todo,checked: false}
+    })
   },
   addTodo(state, todo) {
     state.todos.push({
       id: todo.id,
       content: todo.content,
-      status: todo.status,
+      checked: false
     })
   },
   updateTodo(state, todo) {

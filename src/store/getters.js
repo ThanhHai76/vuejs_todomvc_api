@@ -3,12 +3,12 @@ export default {
     return state.token !== null
   },
   itemsLeft: (state) => {
-    return state.todos.filter((t) => t.status === 'active').length
+    return state.todos.filter((t) => t.checked === false).length
   },
   checkAll: (state, getters) => {
     return getters.itemsLeft == 0
   },
-  completedTodos: (state) => {
-    return state.todos.filter((t) => t.status === 'completed')
+  checkedTodo: (state) => {
+    return state.todos.filter((t) => t.checked === true)
   },
 }
