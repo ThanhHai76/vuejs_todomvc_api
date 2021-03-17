@@ -24,16 +24,16 @@
 <script>
 export default {
   name: 'Master',
+  computed: {
+    loggedIn() {
+      return this.$store.getters.loggedIn;
+    },
+  },
   methods: {
     logout(){
       this.$store.dispatch('logout')
       this.$router.push({ name: 'login' })
     }
-  },
-  computed: {
-    loggedIn() {
-      return this.$store.getters.loggedIn;
-    },
   },
 };
 </script>

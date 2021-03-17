@@ -49,7 +49,8 @@ export default {
   name: 'Login',
   props: {
     dataSuccessMsg: {
-      type: String
+      type: String,
+      default: ''
     }
   },
   data() {

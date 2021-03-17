@@ -47,16 +47,16 @@
 <script>
 export default {
   name: 'TodoItem',
+  props: {
+    todo: {
+      type: Object,
+      default: () => {}
+    },
+  },
   data() {
     return {
       editingTodo: this.$store.state.editingTodo,
     };
-  },
-  props: {
-    todo: {
-      type: Object,
-      required: true
-    },
   },
   computed: {
     checked: {
