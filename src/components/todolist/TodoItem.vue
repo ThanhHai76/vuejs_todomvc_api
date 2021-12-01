@@ -2,7 +2,7 @@
   <div
     class="list-group-item"
     :class="{
-      completed: checked,
+      completed: todoChecked,
       editing: editingTodo,
     }"
   >
@@ -10,8 +10,8 @@
       <input
         class="check-box"
         type="checkbox"
-        v-on:change="checkTodo"
-        v-model="checked"
+        v-on:change="updateTodo"
+        :checked="todoChecked"
       />
       <label class="content" @dblclick="startEditing()">{{
         todo.content
@@ -59,18 +59,9 @@ export default {
     };
   },
   computed: {
-    checked: {
-      get() {
-        return this.todo.checked === true
-      },
-      set(value) {
-        if (value) {
-          this.todo.checked = true
-        } else {
-          this.todo.checked = false
-        }
-      },
-    },
+    todoChecked(){
+      return this.todo.status === 'completed'
+    }
   },
   methods: {
     startEditing() {
@@ -89,11 +80,12 @@ export default {
       this.editingTodo = false
       this.todo.content = this.beforeEditCache
     },
-    updateTodo() {
+    updateTodo(event) {
+      if(event){
+        const checked = event.target.checked
+        checked ? this.todo.status = 'completed' : this.todo.status = 'active'
+      }
       this.$store.dispatch('updateTodo', this.todo)
-    },
-    checkTodo(){
-      this.$store.dispatch('checkTodo', this.todo)
     },
     deleteTodo() {
       this.$store.dispatch('deleteTodo', this.todo)

@@ -39,7 +39,8 @@ export default {
         return
       }
       this.$store.dispatch('addTodo', {
-        content: this.newTodo
+        content: this.newTodo,
+        status: 'active'
       })
       this.newTodo = null
     },

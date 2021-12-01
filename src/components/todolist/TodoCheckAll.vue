@@ -12,24 +12,26 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'TodoCheckAll',
+  data() {
+    return {
+      status: 'active'
+    }
+  },
   computed: {
-    getTodos() {
-      return this.$store.state.todos
-    },
-    isCheckAll() {
-      return this.$store.getters.checkAll
-    },
+    ...mapGetters(['getTodos', 'isCheckAll'])
   },
   methods: {
     checkAll(event) {
       const checked = event.target.checked
+      checked ? this.status = 'completed' : this.status = 'active'
       this.getTodos.forEach((todo) => {
-        this.$store.dispatch('checkTodo', {
+        this.$store.dispatch('updateTodo', {
           id: todo.id,
           content: todo.content,
-          checked: checked
+          status: this.status
         })
       });
     },

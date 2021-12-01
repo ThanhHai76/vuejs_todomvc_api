@@ -22,12 +22,11 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'Master',
   computed: {
-    loggedIn() {
-      return this.$store.getters.loggedIn;
-    },
+    ...mapGetters(['loggedIn'])
   },
   methods: {
     logout(){

@@ -13,7 +13,7 @@
             <todo-item
               v-for="todo in getTodos"
               :key="todo.id"
-              v-bind:todo="todo"
+              :todo="todo"
             ></todo-item>
           </transition-group>
         </div>
@@ -34,16 +34,15 @@
 import TodoHeader from './TodoHeader.vue'
 import TodoFooter from './TodoFooter.vue'
 import TodoItem from './TodoItem.vue'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'TodoList',
-  created() {
+  mounted() {
     this.$store.dispatch('getTodos')
   },
   computed: {
-    getTodos() {
-      return this.$store.state.todos
-    },
+    ...mapGetters(['getTodos'])
   },
   components: {
     TodoHeader,

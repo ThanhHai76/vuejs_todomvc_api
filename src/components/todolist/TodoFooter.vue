@@ -4,7 +4,7 @@
       <button
         class="clear-completed"
         @click="deleteTodoChecked()"
-        v-show="todoChecked.length"
+        v-show="checkedTodo.length"
       >
       Delete checked
       </button>
@@ -13,19 +13,18 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'TodoFooter',
   data() {
     return {}
   },
   computed: {
-    todoChecked() {
-      return this.$store.getters.checkedTodo
-    },
+    ...mapGetters(['checkedTodo'])
   },
   methods: {
     deleteTodoChecked() {
-      this.todoChecked.forEach(todo => {
+      this.checkedTodo.forEach(todo => {
         this.$store.dispatch('deleteTodo', todo)
       });
     },
